@@ -3,6 +3,7 @@ package se.iths.sebastian.records_streams;
 import se.iths.sebastian.records_streams.model.Computer;
 import se.iths.sebastian.records_streams.model.Headset;
 import se.iths.sebastian.records_streams.model.Mouse;
+import se.iths.sebastian.records_streams.model.Webcam;
 
 import java.util.List;
 
@@ -28,6 +29,15 @@ public class WebShopService {
         return headsets.stream()
                 .filter(headset -> headset.price() < maxPrice)
                 .map(headset -> headset.title())
+                .findFirst()
+                .orElseThrow();
+    }
+
+    public String findFirstWebcamTitleByMinResolution(
+            List<Webcam> webcams, int minMegapixels) {
+        return webcams.stream()
+                .filter(webcam -> webcam.megapixels() >= minMegapixels)
+                .map(webcam -> webcam.title())
                 .findFirst()
                 .orElseThrow();
     }

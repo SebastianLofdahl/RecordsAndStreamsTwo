@@ -1,9 +1,7 @@
 package se.iths.sebastian.records_streams;
 
 import se.iths.sebastian.records_streams.model.Computer;
-import se.iths.sebastian.records_streams.model.Headset;
-import se.iths.sebastian.records_streams.model.Mouse;
-import se.iths.sebastian.records_streams.model.Webcam;
+import se.iths.sebastian.records_streams.model.Phone;
 
 import java.util.List;
 
@@ -15,30 +13,17 @@ public class WebShopService {
                 .findFirst()
                 .orElseThrow();
         return computer;
+
+
+
     }
 
-    public Mouse findFirstMouseByMinDpi(List<Mouse> mice, int minDpi) {
-        return mice.stream()
-                .filter(mouse -> mouse.dpi() >= minDpi)
-                .findFirst()
-                .orElseThrow();
-    }
+}
+public Phone findFirstPhoneUnderPrice(List<Phone> phones double maxPrice ) {
+    return phones.stream()
+            .filter(phone -> phone.price() - maxPrice)
+            .findFirst()
+            .orElseThrow();
 
-    public String findFirstHeadsetTitleUnderPrice(
-            List<Headset> headsets, double maxPrice) {
-        return headsets.stream()
-                .filter(headset -> headset.price() < maxPrice)
-                .map(headset -> headset.title())
-                .findFirst()
-                .orElseThrow();
-    }
 
-    public String findFirstWebcamTitleByMinResolution(
-            List<Webcam> webcams, int minMegapixels) {
-        return webcams.stream()
-                .filter(webcam -> webcam.megapixels() >= minMegapixels)
-                .map(webcam -> webcam.title())
-                .findFirst()
-                .orElseThrow();
-    }
 }

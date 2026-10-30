@@ -21,7 +21,7 @@ public class WebShopService {
 }
 public Phone findFirstPhoneUnderPrice(List<Phone> phones double maxPrice ) {
     return phones.stream()
-            .filter(phone -> phone.price() - maxPrice)
+            .filter(phone -> phone.pris() - maxPrice)
             .findFirst()
             .orElseThrow();
 

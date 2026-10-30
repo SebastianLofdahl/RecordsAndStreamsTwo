@@ -19,11 +19,11 @@ public class WebShopService {
     }
 
 }
-public Phone findFirstPhoneUnderPrice(List<Phone> phones double maxPrice ) {
+public <maxPrice> Phone findFirstPhoneUnderPrice(List<Phone> phones double maxPrice) {
     return phones.stream()
-            .filter(phone -> phone.pris() - maxPrice)
+            .filter(phone -> phone.price() - maxPrice)
             .findFirst()
             .orElseThrow();
 
-
+ return phones;
 }
